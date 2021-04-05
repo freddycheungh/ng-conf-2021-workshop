@@ -5,6 +5,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
     "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -24,7 +25,8 @@
       "@components/*": ["src/app/components/*"],
       "@pages/*": ["src/app/pages/*"],
       "@store/*": ["src/app/store/*"],
-      "@service/*": ["src/app/services/*"]
+      "@service/*": ["src/app/services/*"],
+      "@utils/*": ["src/app/utils/*"]
     },
   },
   "angularCompilerOptions": {

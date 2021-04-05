@@ -1,10 +1,25 @@
-<nav>
+<nav [appFocusTrap]="isOpen">
   <img src="assets/rangle-logo-black.png" alt="Rangle Logo" />
-  <ul>
+  <ul [class.active]="isOpen">
     <ng-container *ngIf="response$ | async; let response">
       <li *ngFor="let item of response">
-        <a [routerLink]="item.href"> {{ item.description }} </a>
+        <a [routerLink]="item.href" (click)="onClickMenu()">
+          {{ item.description }}
+        </a>
       </li>
     </ng-container>
   </ul>
+  <button
+    #button
+    type="button"
+    class="burger-icon"
+    [class.active]="isOpen"
+    (click)="onClickMenu()"
+  >
+    <ul class="stripe-container">
+      <li class="stripe"></li>
+      <li class="stripe"></li>
+      <li class="stripe"></li>
+    </ul>
+  </button>
 </nav>

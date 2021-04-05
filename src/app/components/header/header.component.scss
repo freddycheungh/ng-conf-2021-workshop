@@ -10,10 +10,20 @@ img {
 }
 
 nav {
-  @apply w-full flex items-center;
+  @apply w-full flex justify-between items-center;
 
   > ul {
-    @apply flex justify-center w-full list-none my-0 pl-0;
+    @apply hidden md:flex lg:flex xl:flex justify-center w-full h-full list-none my-0 pl-0;
+
+    &.active {
+      @apply flex fixed flex-col top-0 z-10;
+      background-color: $-black;
+
+      > li {
+        @apply text-2xl text-center;
+        color: $-white;
+      }
+    }
 
     > li {
       @apply p-4;
@@ -25,6 +35,58 @@ nav {
         &:hover,
         &:focus {
           color: $-red;
+        }
+      }
+    }
+  }
+
+  // Mobile Menu
+  button {
+    @apply cursor-pointer z-10 m-1 p-4 block md:hidden lg:hidden;
+
+    &.burger-icon {
+      @apply bg-transparent border-0;
+      transition: all 0.3s ease;
+
+      &.active {
+        > ul.stripe-container {
+          color: $-white;
+
+          > li.stripe {
+            @apply -mt-1;
+            background-color: $-white;
+            transform: rotate(45deg) translateZ(0);
+
+            &:nth-child(2) {
+              @apply opacity-0;
+            }
+            &:last-child {
+              transform: rotate(-45deg) translateZ(0);
+            }
+          }
+        }
+      }
+
+      > ul.stripe-container {
+        @apply flex justify-center items-center flex-col m-0 p-0 list-none w-8 h-8;
+        transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1),
+          color 1s cubic-bezier(0.23, 1, 0.32, 1);
+        transform: translateZ(0);
+        color: $-black;
+
+        > li.stripe {
+          @apply w-full h-1;
+          background-color: $-black;
+          transform: translateY(-3.75px) translateZ(0);
+          transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1),
+            background-color 1s cubic-bezier(0.23, 1, 0.32, 1);
+
+          &:nth-child(2) {
+            transform: translateY(0) translateZ(0);
+          }
+          &:last-child {
+            transform: translateY(3.75px) translateZ(0);
+          }
         }
       }
     }
