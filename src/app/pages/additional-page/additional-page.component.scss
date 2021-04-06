@@ -1,3 +1,25 @@
+@import '../../styles/variables.scss';
+
 :host {
   @apply flex justify-center items-center w-full h-full;
+}
+
+div {
+  @apply px-8 py-16 text-center;
+}
+
+p {
+  @apply mb-8 text-lg;
+}
+
+a {
+  @apply border border-solid p-2 text-white px-5 py-3;
+  background-color: $-black;
+  border-color: $-black;
+  transition: background-color 300ms ease, border-color 300ms ease;
+
+  &:hover {
+    background-color: $-red;
+    border-color: $-red;
+  }
 }
